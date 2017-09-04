@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+   <schemafrag id="1"> <!-- definitions for fragmentation schema -->
+	<sizethreshold>11543</sizethreshold>
+        <documents>datasetaffrag</documents>
+	<items> <!-- map elements/attributes to fragments -->
+	    <item name="producer" entity="Product" pa="PA1" template="T1"/>
+	    <item name="product" entity="Product" pa="PA1" template="T1"/>          
+	    <item name="reviewFor" entity="Product" pa="PA1" template="T1"/>          
+            <item name="productFeature" entity="Product" pa="PA1" template="T1"/>  
+            <item name="type" entity="Product" pa="PA1" template="T1"/>
+	    <item name="label" entity="Product" pa="PA1" template="T1"/>
+	    <item name="comment" entity="Product" pa="PA1" template="T1"/>    
+            <item name="productPropertyTextual1" entity="Product" pa="PA1" template="T1"/>
+            <item name="productPropertyTextual2" entity="Product" pa="PA1" template="T1"/>
+            <item name="productPropertyTextual3" entity="Product" pa="PA1" template="T1"/>
+            <item name="productPropertyTextual4" entity="Product" pa="PA1" template="T1"/>
+            <item name="productPropertyTextual5" entity="Product" pa="PA1" template="T1"/>
+	    <item name="productPropertyTextual6" entity="Product" pa="PA1" template="T1"/>
+            <item name="productPropertyNumeric1" entity="Product" pa="PA1" template="T1"/>
+            <item name="productPropertyNumeric2" entity="Product" pa="PA1" template="T1"/>
+            <item name="productPropertyNumeric3" entity="Product" pa="PA1" template="T1"/>
+            <item name="productPropertyNumeric4" entity="Product" pa="PA1" template="T1"/>
+            <item name="productPropertyNumeric5" entity="Product" pa="PA1" template="T1"/>
+            <item name="productPropertyNumeric6" entity="Product" pa="PA1" template="T1"/>
+            <item name="type" entity="Producer" pa="PA1" template="T3"/>
+	    <item name="producer" entity="Producer" pa="PA1" template="T3"/>
+            <item name="label" entity="Producer" pa="PA1" template="T3"/>   
+            <item name="comment" entity="Producer" pa="PA1" template="T3"/>
+            <item name="homepage" entity="Producer" pa="PA1" template="T3"/>
+            <item name="country" entity="Producer" pa="PA1" template="T3"/>
+            <item name="label" entity="ProductType" pa="PA1" template="T3"/>
+            <item name="comment" entity="ProductType" pa="PA1" template="T3"/>    
+            <item name="type" entity="ProductType" pa="PA1" template="T3"/>
+            <item name="subclassof" entity="ProductType" pa="PA1" template="T3"/>
+	    <item name="comment" entity="ProductType" pa="PA1" template="T3"/>
+            <item name="date" entity="ProductType" pa="PA1" template="T3"/>      
+	    <item name="label" entity="ProductFeature" pa="PA1" template="T4"/>
+            <item name="comment" entity="ProductFeature" pa="PA1" template="T4"/>
+            <item name="type" entity="ProductFeature" pa="PA1" template="T4"/> 
+            <item name="productFeature" entity="ProductFeature" pa="PA1" template="T4"/>        
+            <item name="product" entity="Offer" pa="PA1" template="T1"/>                 
+            <item name="price" entity="Offer" pa="PA1" template="T1"/>
+            <item name="validFrom" entity="Offer" pa="PA1" template="T2"/>
+            <item name="validTo" entity="Offer" pa="PA1" template="T2"/>
+            <item name="deliveryDays" entity="Offer" pa="PA1" template="T2"/>
+            <item name="offerWebPage" entity="Offer" pa="PA1" template="T2"/>
+	    <item name="type" entity="Offer" pa="PA1" template="T2"/>
+	    <item name="vendor" entity="Offer" pa="PA1" template="T2"/>
+            <item name="reviewDate" entity="Review" pa="PA1" template="T6"/>
+            <item name="title" entity="Review" pa="PA1" template="T6"/>
+            <item name="text" entity="Review" pa="PA1" template="T6"/>
+            <item name="rating1" entity="Review" pa="PA1" template="T6"/>
+	    <item name="rating2" entity="Review" pa="PA1" template="T6"/>
+	    <item name="rating3" entity="Review" pa="PA1" template="T6"/>
+	    <item name="rating4" entity="Review" pa="PA1" template="T6"/>
+	    <item name="reviewer" entity="Review" pa="PA1" template="T6"/>
+	    <item name="type" entity="Review" pa="PA1" template="T6"/>
+            <item name="reviewFor" entity="Review" pa="PA1" template="T6"/>
+            <item name="name" entity="Person" pa="PA1" template="T6"/>
+            <item name="mbox" entity="Person" pa="PA1" template="T6"/>
+            <item name="country" entity="Person" pa="PA1" template="T6"/>
+	    <item name="type" entity="Person" pa="PA1" template="T6"/>
+	    <item name="reviewer" entity="Person" pa="PA1" template="T6"/> 
+	    <item name="vendor" entity="Vendor" pa="PA1" template="T5"/> 
+            <item name="label" entity="Vendor" pa="PA1" template="T5"/>
+            <item name="comment" entity="Vendor" pa="PA1" template="T5"/>
+            <item name="type" entity="Vendor" pa="PA1" template="T5"/>
+            <item name="homepage" entity="Vendor" pa="PA1" template="T5"/>
+            <item name="country" entity="Vendor" pa="PA1" template="T5"/>
+	    <item name="vendor" entity="Vendor" pa="PA1" template="T5"/> 
+	</items>
+   </schemafrag>
+   <schemafrag id="2"> <!-- definitions for fragmentation schema -->
+        <documents>datasethash</documents>
+	<items/>
+   </schemafrag>
+   <schemafrag id="3"> <!-- definitions for fragmentation schema -->
+        <documents>datasetmetis</documents>
+	<threshold>500</threshold>
+	<sizethreshold>11543</sizethreshold>	
+	<hops>2</hops>
+	<items/>
+   </schemafrag>
+</config>
