@@ -2,22 +2,23 @@ import xml.etree.ElementTree as ET
 
 tree = ET.parse('configure_frag.xml')
 root = tree.getroot()
-obj,prop,temp,t,i,templ = [],[],[],[],0,[]
+obj,prop,name,templ,temp,output = [],[],[],[],[],[]
 
 for item in root.iter('item'):
 	parent = list(item.attrib.items())
 	for i in range(len(parent)):
-		obj.append(parent[i][0])
-		prop.append(parent[i][1])
-	obj = list(set(obj))
-	templ.append(prop[obj.index('template')])
-#templ = sorted(list(set(templ)))
-print(templ)
-'''for item in root.iter('item'):
-	if(prop[obj.index('template')] == 'T1'):
-		temp.append(prop[obj.index('name')])
-	del obj[:]
-	del prop[:]'''
-print(' T1:')
-for j in range(len(t)):
-	print(t[j])
+		obj = parent[i][0]
+		prop = parent[i][1]
+		if (obj == 'template'):
+			templ.append(prop)
+		elif (obj == 'name'):
+			name.append(prop)
+t = list(set(templ))
+for i in range(len(t)):
+	for j in range(len(templ)):
+		if (t[i] == templ[j]):
+			temp.append(name[j])
+		output.append(temp)
+		del temp[:]
+for i in range(len(t)):
+	output[i] = sorted(list(set(output[i])))
