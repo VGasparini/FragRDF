@@ -17,7 +17,7 @@ t = list(set(templ))
 for i in range(len(t)):
 	for j in range(len(templ)):
 		if (t[i] == templ[j]):
-			temp.append(name[j])
+			temp.append(name[i])
 		output.append(temp)
 		del temp[:]
 for i in range(len(t)):
