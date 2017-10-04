@@ -18,17 +18,23 @@ for item in root.iter('item'):
 			entity.append(prop)
 		elif (obj == 'name'):
 			name.append(prop)
-
 # template	  entity 		    name
 #  ("T1")	("Product")		("producer")
 
-template_index = list(set(template))
+template_index = sorted(list(set(template)))
 
 for i in range(len(template_index)):
+	temp2 = []
 	for j in range(len(template)):
 		temp = []
 		if (template_index[i] == template[j]):
-			temp.append(entitye[j])
+			temp.append(entity[j])
 			temp.append(name[j])
-		data.append(temp)
+		if (not not temp): temp2.append(temp)
 		del temp
+	data.append(temp2)
+	del temp2
+
+# Var -> data
+#	  entity 		    name
+#	("Product")		("producer")
