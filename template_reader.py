@@ -1,5 +1,3 @@
-import xml.etree.ElementTree as ET
-
 tree = ET.parse('configurefrag.xml')
 root = tree.getroot()
 
@@ -18,8 +16,9 @@ for item in root.iter('item'):
 			entity.append(prop)
 		elif (obj == 'name'):
 			name.append(prop)
-# template	  entity 		    name
-#  ("T1")	("Product")		("producer")
+
+	# template	  object 		 predicate
+	#  ("T1")	("Product")		("producer")
 
 template_index = sorted(list(set(template)))
 
@@ -33,8 +32,4 @@ for i in range(len(template_index)):
 		if (not not temp): temp2.append(temp)
 		del temp
 	data.append(temp2)
-	del temp2
-
-# Var -> data
-#	  entity 		    name
-#	("Product")		("producer")
+del temp2
