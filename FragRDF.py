@@ -49,14 +49,14 @@ def template_reader(path):
 	for item in root.iter('item'):
 		data1.append(list(item.attrib.items()))
 	for i in range(len(data1)):
-		temp2 = data1[i][0][1] , data1[i][1][1]
-		data[int(data1[i][3][1][1:])-1].append(temp2)
-		if(not any(t == data1[i][0][1] for t in name)):
-			name.append(data1[i][0][1])
-		if(not any(t == data1[i][1][1] for t in entity)):
-			entity.append(data1[i][1][1])
-		if(not any(t == data1[i][3][1] for t in template)):
-			template.append(data1[i][3][1])
+		t = data1[i][1][1] , data1[i][3][1]
+		data[int(data1[i][2][1][1:])-1].append(t)
+		if(not any(t == data1[i][1][1] for t in name)):
+			name.append(data1[i][1][1])
+		if(not any(t == data1[i][3][1] for t in entity)):
+			entity.append(data1[i][3][1])
+		if(not any(t == (int(data1[i][2][1][1:])-1) for t in template)):
+			template.append(int(data1[i][2][1][1:])-1)
 	# Var -> data[template_index][object,predicate]
 	return data,template
 
@@ -69,30 +69,22 @@ g.parse(base_path,format='nt')
 schema,template_index = template_reader(schema_path)
 
 data,name = [],file_name(schema)
-
+temp = []
 for index in range(len(template_index)):
 	objects,predicates = [],[]
-	template = template_index[index]
 
 	for instance in range(len(schema[index])):
-		objects.append(schema[index][instance][0])
-		predicates.append(schema[index][instance][1])
-
-	temp = []
+		objects.append(schema[index][instance][1])
+		predicates.append(schema[index][instance][0])
 
 	for instance in range(len(predicates)):
-
 		ref_predicate = reference(predicates[instance])
 		ref_object = reference(objects[instance])
-
 		temp.append(list(x for x in g.subject_objects(predicate=ref_predicate)))
-		print(ref_predicate)
-		pprint(temp)
-		break
-	break
 
 	data.append(temp)
-
+	break
+pprint(data)
 
 for i in range(len(data)):
 	create_part(i,name,sorted(data[i]))
