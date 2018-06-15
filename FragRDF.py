@@ -8,27 +8,22 @@ def template_reader(path):
     tree = ET.parse(path)
     root = tree.getroot()
     template = []
-    for item in root.iter('items'):
+    for item in root.iter("items"):
         for items in item.findall("item"):
-            if not items.get('template') in template: template.append(items.get('template'))
+            if not items.get("template") in template: template.append(items.get("template"))
     entity = [[] for x in range(len(template))]
     name = [[] for x in range(len(template))]
-    for item in root.iter('items'):
+    for item in root.iter("items"):
         for items in item.findall("item"):
-    		index = int(items.get('template')[1:])-1
-    		entity[index].append(items.get('entity'))
-    		name[index].append(items.get('name'))
+    		index = int(items.get("template")[1:])-1
+    		entity[index].append(items.get("entity"))
+    		name[index].append(items.get("name"))
     return template,name,entity
 
 
 def write(t,obj):
-    name = "part.{}".format(t)
-    try:
-        file = open(name, "r+")
-    except:
-        file = open(name, "w+")
-    file.writelines(obj + "\n")
-    file.close()
+    with open("part.{}".format(t), "a+") as file:
+        file.write(obj)
 
 
 base_path = "dataset.nt"
@@ -43,5 +38,5 @@ for s, p, o in g.triples((None, RDF.type, None)):
         if str(o) in entity[t]:
             for i, j, k in g.triples((s, None, None)):
                 if str(j) in name[t]:
-                    temp = "<" + str(i) + "> <" + str(j) + "> <" + str(k) + ">"
+                    temp = "<" + str(i) + "> <" + str(j) + "> <" + str(k) + ">\n"
                     write(template[t],temp)
