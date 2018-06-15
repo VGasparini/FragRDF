@@ -1,133 +1,57 @@
-import rdflib																		
+import rdflib
+from rdflib import *
 import xml.etree.ElementTree as ET
-from rdflib import Namespace
+from pprint import *
 import time
 
-def create_part(part,obj):														
 
-	name = "part.t" + str(part+1)
-	try:
-   		file = open(name, 'r+')
-	except:
-		file = open(name, 'w+')
-	for i in range(len(obj)):
-		for j in range(len(obj[i])):
-			file.writelines("<"+str(obj[i][j])+">")
-			file.writelines('\n')
-	file.close()
-
-def create_log(log,op):
-
-	name = "log-" + str(op) + ".txt"
-	try:
-   		file = open(name, 'r+')
-	except:
-		file = open(name, 'w+')
-	file.writelines("\n\nTempo de execucao total: {:.3f}s\nTempo verificacao schema: {:.3f}s\nTempo coletar dados: {:.3f}s\nTempo de criacao dos arquivos: {:.3f}s".format(log[0],log[1],log[2],log[3]))
-	file.close()
-
-def file_name(x):													
-	return x[(x.rfind("/")+1):]
-
-def reference(g):													
-	end = g[(g.rfind("/")+1):]
-	ref = Namespace(g[:(g.rfind("/")+1):])
-	return ref[end]
-
-def template_read():
-	tree = ET.parse('configurefrag.xml')
-	root = tree.getroot()
-
-	obj,prop = [],[]
-	name,entity,template = [],[],[]
-	data = []
-
-	for item in root.iter('item'):
-		parent = list(item.attrib.items())
-		for i in range(len(parent)):
-			obj = parent[i][0]
-			prop = parent[i][1]
-			if (obj == 'template'):
-				template.append(prop)
-			elif (obj == 'entity'):
-				entity.append(prop)
-			elif (obj == 'name'):
-				name.append(prop)
-
-	# template	  object 		 predicate
-	#  ("T1")	("Product")		("producer")
-
-	template_index = sorted(list(set(template)))
-
-	for i in range(len(template_index)):
-		temp2 = []
-		for j in range(len(template)):
-			temp = []
-			if (template_index[i] == template[j]):
-				temp.append(entity[j])
-				temp.append(name[j])
-			if (not not temp): temp2.append(temp)
-			del temp
-		data.append(temp2)
-	del temp2
-	
-	# Var -> data[template_index[object,predicate]]
-
-	return data,template_index
-
-opi = ['dataset01.nt','dataset02.nt','dataset03.nt','dataset04.nt','dataset05.nt','dataset06.nt','dataset07.nt','dataset08.nt','dataset09.nt','dataset10.nt','dataset11.nt','dataset12.nt','dataset13.nt','dataset14.nt','dataset15.nt','dataset16.nt','dataset17.nt','dataset18.nt','dataset19.nt','dataset20.nt','dataset21.nt','dataset22.nt','dataset23.nt','dataset24.nt','dataset25.nt','dataset26.nt','dataset27.nt','dataset28.nt','dataset29.nt','dataset30.nt']
-temp_file,temp_coleta,temp_total,temp_schema = 0,0,0,0
+def template_reader(path):
+    tree = ET.parse(path)
+    root = tree.getroot()
+    template = []
+    for item in root.iter("items"):
+        for items in item.findall("item"):
+            if not items.get("template") in template: template.append(items.get("template"))
+    entity = [[] for x in range(len(template))]
+    name = [[] for x in range(len(template))]
+    for item in root.iter("items"):
+        for items in item.findall("item"):
+    		index = int(items.get("template")[1:])-1
+    		entity[index].append(items.get("entity"))
+    		name[index].append(items.get("name"))
+    return template,name,entity
 
 
-for op in range(len(opi)):
 
-	ini = time.time()
-	
-	g = rdflib.Graph()
-	g.parse(opi[op],format='nt')
-	
-	schema_ini = time.time()
-	schema,template_index = template_read()
-	schema_end = time.time()
-	
-	data = []
-	
-	for index in range(len(template_index)):
-		objects,predicates = [],[]
-		template = template_index[index]
-	
-		for instance in range(len(schema[index])):
-			objects.append(schema[index][instance][0])
-			predicates.append(schema[index][instance][1])
-		
-	
-		temp = []
-		
-		for instance in range(len(predicates)):
-			
-			ref_predicate = reference(predicates[instance])
-			type = g.value(ref_predicate)
-	
-			temp.append(list(x for x in g.subject_objects(predicate=ref_predicate)))
-		
-		data.append(temp)
-	
-	end = time.time()
-	
-	file_ini = time.time()
-	for i in range(len(data)):
-		create_part(i,sorted(data[i]))
-	file_end = time.time()
-	
+def instance(obj):
+    return obj[obj.rfind('/')+1:]
 
-	log = [file_end-ini,schema_end-schema_ini,end-ini,file_end-file_ini]
 
-	temp_total += file_end-ini
-	temp_schema += schema_end-schema_ini
-	temp_coleta += end-ini
-	temp_file += file_end-file_ini
+def write(subj,t,obj):
+    with open("{}.{}".format(subj,t), "a+") as file:
+        file.write(obj)
 
-	create_log(log,opi[op])
+start = time.time()
+base_path = ["dataset50.nt"]
+schema_path = "configurefrag.xml"
 
-log = [temp_total,temp_schema,temp_coleta,temp_file]
-create_log(log,'dataset.nt')
+g = rdflib.Graph()
+
+for names in range(len(base_path)):
+    g.load(base_path[names], format="nt")
+    check_1 = time.time()
+    template,name,entity = template_reader(schema_path)
+    check_2 = time.time()
+
+    for s, p, o in g.triples((None, RDF.type, None)):
+        for t in range(len(template)):
+            if str(o) in entity[t]:
+                for i, j, k in g.triples((s, None, None)):
+                    if str(j) in name[t]:
+                        temp = "<" + str(i) + "> <" + str(j) + "> <" + str(k) + ">\n"
+                        write(instance(str(s)),template[t],temp)
+
+    check_3 = time.time()
+    endd = time.time()
+    with open("log{}.txt".format(names), "a+") as file:
+        file.write(("Tempo abertura da base {:.2f}s\nTempo leitura do configurefrag {:.5f}s\nTempo de fragmentacao {:.2f}s\nTempo total {:.2f}s".format(check_1-start,check_2-check_1,check_3-check_2,endd-start)))
