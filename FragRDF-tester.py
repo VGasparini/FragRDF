@@ -3,7 +3,7 @@ from rdflib import *
 import xml.etree.ElementTree as ET
 from pprint import *
 import time
-
+import os
 
 def template_reader(path):
     tree = ET.parse(path)
@@ -22,36 +22,52 @@ def template_reader(path):
     return template,name,entity
 
 
-
 def instance(obj):
     return obj[obj.rfind('/')+1:]
 
 
-def write(subj,t,obj):
-    with open("{}.{}".format(subj,t), "a+") as file:
+def write_prod(base,subj,t,obj):
+    with open("./files{}/{}.{}".format(base[-8:-3],subj,t), "a+") as file:
         file.write(obj)
 
-start = time.time()
-base_path = ["dataset50.nt"]
+
+def write(base,t,obj):
+    with open("/files{}/part.{}".format(base[-8:-3],t), "a+") as file:
+        file.write(obj)
+
+base_path = ["dataset01000.nt","dataset02000.nt","dataset05000.nt","dataset10000.nt"]
 schema_path = "configurefrag.xml"
 
 g = rdflib.Graph()
-
-for names in range(len(base_path)):
-    g.load(base_path[names], format="nt")
+for base in base_path:
+    os.mkdir("./files{}".format(base[-8:-3]))
+    start = time.time()
+    g.load(base, format="nt")
     check_1 = time.time()
     template,name,entity = template_reader(schema_path)
-    check_2 = time.time()
-
     for s, p, o in g.triples((None, RDF.type, None)):
         for t in range(len(template)):
             if str(o) in entity[t]:
                 for i, j, k in g.triples((s, None, None)):
                     if str(j) in name[t]:
                         temp = "<" + str(i) + "> <" + str(j) + "> <" + str(k) + ">\n"
-                        write(instance(str(s)),template[t],temp)
+                        write_prod(base,instance(str(s)),template[t],temp)
+    check_2 = time.time()
+    with open("log1-{}.txt".format(base), "a+") as file:
+        file.write(("Tempo abertura da base {:.2f}s\nTempo de fragmentacao {:.2f}s\nTempo total {:.2f}s".format(check_1-start,check_2-check_1,check_2-start)))
 
-    check_3 = time.time()
-    endd = time.time()
-    with open("log{}.txt".format(names), "a+") as file:
-        file.write(("Tempo abertura da base {:.2f}s\nTempo leitura do configurefrag {:.5f}s\nTempo de fragmentacao {:.2f}s\nTempo total {:.2f}s".format(check_1-start,check_2-check_1,check_3-check_2,endd-start)))
+for base in base_path:
+    start = time.time()
+    g.load(base, format="nt")
+    check_1 = time.time()
+    template,name,entity = template_reader(schema_path)
+    for s, p, o in g.triples((None, RDF.type, None)):
+        for t in range(len(template)):
+            if str(o) in entity[t]:
+                for i, j, k in g.triples((s, None, None)):
+                    if str(j) in name[t]:
+                        temp = "<" + str(i) + "> <" + str(j) + "> <" + str(k) + ">\n"
+                        write(base,template[t],temp)
+    check_2 = time.time()
+    with open("log2-{}.txt".format(base), "a+") as file:
+        file.write(("Tempo abertura da base {:.2f}s\nTempo de fragmentacao {:.2f}s\nTempo total {:.2f}s".format(check_1-start,check_2-check_1,check_2-start)))
