@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+   <schemafrag id="1"> <!-- definitions for fragmentation schema -->
+	<sizethreshold>11543</sizethreshold>
+        <documents>datasetaffrag</documents>
+	<items> <!-- map elements/attributes to fragments -->
+	    <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/producer" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Product" pa="PA1" template="T1"/>
+	    <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/product" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Product" pa="PA1" template="T1"/>
+	    <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/reviewFor" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Product" pa="PA1" template="T1"/>
+            <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/productFeature" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Product" pa="PA1" template="T1"/>
+            <item name="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Product" pa="PA1" template="T1"/>
+	    <item name="http://www.w3.org/2000/01/rdf-schema#label" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Product" pa="PA1" template="T1"/>
+	    <item name="http://www.w3.org/2000/01/rdf-schema#comment" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Product" pa="PA1" template="T1"/>
+            <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/productPropertyTextual1" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Product" pa="PA1" template="T1"/>
+            <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/productPropertyTextual2" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Product" pa="PA1" template="T1"/>
+            <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/productPropertyTextual3" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Product" pa="PA1" template="T1"/>
+            <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/productPropertyTextual4" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Product" pa="PA1" template="T1"/>
+            <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/productPropertyTextual5" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Product" pa="PA1" template="T1"/>
+	    <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/productPropertyTextual6" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Product" pa="PA1" template="T1"/>
+            <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/productPropertyNumeric1" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Product" pa="PA1" template="T1"/>
+            <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/productPropertyNumeric2" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Product" pa="PA1" template="T1"/>
+            <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/productPropertyNumeric3" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Product" pa="PA1" template="T1"/>
+            <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/productPropertyNumeric4" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Product" pa="PA1" template="T1"/>
+            <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/productPropertyNumeric5" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Product" pa="PA1" template="T1"/>
+            <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/productPropertyNumeric6" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Product" pa="PA1" template="T1"/>
+            <item name="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Producer" pa="PA1" template="T3"/>
+	    <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/producer" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Producer" pa="PA1" template="T3"/>
+            <item name="http://www.w3.org/2000/01/rdf-schema#label" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Producer" pa="PA1" template="T3"/>
+            <item name="http://www.w3.org/2000/01/rdf-schema#comment" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Producer" pa="PA1" template="T3"/>
+            <item name="http://xmlns.com/foaf/0.1/homepage" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Producer" pa="PA1" template="T3"/>
+            <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/country" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Producer" pa="PA1" template="T3"/>
+	    <item name="http://www.w3.org/2000/01/rdf-schema#label" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/ProductFeature" pa="PA1" template="T4"/>
+            <item name="http://www.w3.org/2000/01/rdf-schema#comment" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/ProductFeature" pa="PA1" template="T4"/>
+            <item name="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/ProductFeature" pa="PA1" template="T4"/>
+            <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/productFeature" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/ProductFeature" pa="PA1" template="T4"/>
+            <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/product" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Offer" pa="PA1" template="T1"/>
+            <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/price" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Offer" pa="PA1" template="T1"/>
+            <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/validFrom" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Offer" pa="PA1" template="T2"/>
+            <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/validTo" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Offer" pa="PA1" template="T2"/>
+            <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/deliveryDays" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Offer" pa="PA1" template="T2"/>
+            <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/offerWebpage" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Offer" pa="PA1" template="T2"/>
+	    <item name="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Offer" pa="PA1" template="T2"/>
+	    <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/vendor" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Offer" pa="PA1" template="T2"/>
+            <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/reviewDate" entity="http://purl.org/stuff/rev#Review" pa="PA1" template="T6"/>
+            <item name="http://purl.org/dc/elements/1.1/title" entity="http://purl.org/stuff/rev#Review" pa="PA1" template="T6"/>
+            <item name="http://purl.org/stuff/rev#text" entity="http://purl.org/stuff/rev#Review" pa="PA1" template="T6"/>
+            <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/rating1" entity="http://purl.org/stuff/rev#Review" pa="PA1" template="T6"/>
+	    <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/rating2" entity="http://purl.org/stuff/rev#Review" pa="PA1" template="T6"/>
+	    <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/rating3" entity="http://purl.org/stuff/rev#Review" pa="PA1" template="T6"/>
+	    <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/rating4" entity="http://purl.org/stuff/rev#Review" pa="PA1" template="T6"/>
+	    <item name="http://purl.org/stuff/rev#reviewer" entity="http://purl.org/stuff/rev#Review" pa="PA1" template="T6"/>
+	    <item name="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" entity="http://purl.org/stuff/rev#Review" pa="PA1" template="T6"/>
+            <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/reviewFor" entity="http://purl.org/stuff/rev#Review" pa="PA1" template="T6"/>
+            <item name="http://xmlns.com/foaf/0.1/name" entity="http://xmlns.com/foaf/0.1/Person" pa="PA1" template="T6"/>
+            <item name="http://xmlns.com/foaf/0.1/mbox_sha1sum" entity="http://xmlns.com/foaf/0.1/Person" pa="PA1" template="T6"/>
+            <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/country" entity="http://xmlns.com/foaf/0.1/Person" pa="PA1" template="T6"/>
+	    <item name="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" entity="http://xmlns.com/foaf/0.1/Person" pa="PA1" template="T6"/>
+	    <item name="http://purl.org/stuff/rev#reviewer" entity="http://xmlns.com/foaf/0.1/Person" pa="PA1" template="T6"/>
+	    <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/vendor" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Vendor" pa="PA1" template="T5"/>
+            <item name="http://www.w3.org/2000/01/rdf-schema#label" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Vendor" pa="PA1" template="T5"/>
+            <item name="http://www.w3.org/2000/01/rdf-schema#comment" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Vendor" pa="PA1" template="T5"/>
+            <item name="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Vendor" pa="PA1" template="T5"/>
+            <item name="http://xmlns.com/foaf/0.1/homepage" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Vendor" pa="PA1" template="T5"/>
+            <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/country" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Vendor" pa="PA1" template="T5"/>
+	    <item name="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/vendor" entity="http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Vendor" pa="PA1" template="T5"/>
+	</items>
+   </schemafrag>
+   <schemafrag id="2"> <!-- definitions for fragmentation schema -->
+        <documents>datasethash</documents>
+	<items/>
+   </schemafrag>
+   <schemafrag id="3"> <!-- definitions for fragmentation schema -->
+        <documents>datasetmetis</documents>
+	<threshold>500</threshold>
+	<sizethreshold>11543</sizethreshold>
+	<hops>2</hops>
+	<items/>
+   </schemafrag>
+</config>
